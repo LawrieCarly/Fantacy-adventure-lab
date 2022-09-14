@@ -1,10 +1,11 @@
 package Players;
 
+import Behaviours.IHeal;
 import Players.Player;
 import Types.HealerType;
 import Types.ToolType;
 
-public class Healer extends Player {
+public class Healer extends Player implements IHeal {
 
     private HealerType healerType;
     private ToolType tool;
@@ -26,5 +27,14 @@ public class Healer extends Player {
 
     public void changeTool(ToolType tool){
         this.tool = tool;
+    }
+
+    @Override
+    public void heal(Player player) {
+        if (player.isAlive()) {
+            int healthPoints = player.getHealthPoints();
+            int restorePoints = this.tool.getRestorePoints();
+            player.setHealthPoints(healthPoints + restorePoints);
+        }
     }
 }
