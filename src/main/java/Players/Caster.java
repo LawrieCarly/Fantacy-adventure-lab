@@ -1,4 +1,12 @@
-public class Caster extends Player implements IAttack {
+package Players;
+
+import Behaviours.IAttack;
+import Behaviours.IDefend;
+import Types.CasterType;
+import Types.CreatureType;
+import Types.SpellType;
+
+public class Caster extends Player implements IAttack, IDefend {
 
     private CasterType casterType;
     private SpellType spell;
@@ -30,5 +38,16 @@ public class Caster extends Player implements IAttack {
 
     public void changeCreature(CreatureType creature) {
         this.creature = creature;
+    }
+
+    @Override
+    public void attack(Player player) {
+
+    }
+
+
+    @Override
+    public int defend() {
+        return this.creature.getDefencePoints();
     }
 }

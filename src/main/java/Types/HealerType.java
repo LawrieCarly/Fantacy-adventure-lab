@@ -1,12 +1,13 @@
-public enum CasterType {
+package Types;
 
-    WIZARD(10, 2),
-    WARLOCK(8, 7);
+public enum HealerType {
+
+    CLERIC(18, 4);
 
     private final int spellResistance;
     private final int weaponResistance;
 
-    CasterType(int spellResistance, int weaponResistance) {
+    HealerType(int spellResistance, int weaponResistance) {
         this.spellResistance = spellResistance;
         this.weaponResistance = weaponResistance;
     }

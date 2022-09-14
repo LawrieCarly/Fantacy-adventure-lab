@@ -1,7 +1,11 @@
+import Players.Caster;
+import Players.Healer;
+import Players.Warrior;
+import Types.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class WarriorTest {
 
@@ -9,12 +13,18 @@ public class WarriorTest {
     Warrior tron;
     Warrior kane;
 
+    Healer DrFeelGood;
+
+    Caster caster;
+
 
     @Before
     public void setUp() {
         spartacus = new Warrior(true, 100, WarriorType.BARBARIAN, WeaponType.AXE);
         tron = new Warrior(true, 70, WarriorType.KNIGHT, WeaponType.SWORD);
         kane = new Warrior(true, 80, WarriorType.DWARF, WeaponType.CLUB);
+        DrFeelGood = new Healer(true, 50, HealerType.CLERIC, ToolType.HERB);
+        caster = new Caster(true, 20, CasterType.WIZARD, SpellType.LIGHTNINGSTRIKE, CreatureType.OGRE);
     }
 
     @Test
@@ -29,10 +39,17 @@ public class WarriorTest {
     }
 
     @Test
-    public void canChangeWeapon() {
-        tron.changeWeapon(WeaponType.CLUB);
-        assertEquals(WeaponType.CLUB, tron.getWeapon());
+    public void canAttackWarrior() {
+        spartacus.attack(tron);
+        assertEquals(64, tron.getHealthPoints());
+    }
 
+    @Test
+    public void canAttackOtherTypes(){
+        spartacus.attack(DrFeelGood);
+        spartacus.attack(caster);
+        assertEquals(45, DrFeelGood.getHealthPoints());
+        assertEquals(14, caster.getHealthPoints());
     }
 
 }

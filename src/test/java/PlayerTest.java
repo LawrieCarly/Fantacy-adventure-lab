@@ -1,3 +1,4 @@
+import Players.Player;
 import org.junit.Before;
 import org.junit.Test;
 

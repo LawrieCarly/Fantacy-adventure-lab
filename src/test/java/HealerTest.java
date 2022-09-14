@@ -1,3 +1,6 @@
+import Players.Healer;
+import Types.HealerType;
+import Types.ToolType;
 import org.junit.Before;
 import org.junit.Test;
 

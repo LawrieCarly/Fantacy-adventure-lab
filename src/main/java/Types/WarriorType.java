@@ -1,3 +1,5 @@
+package Types;
+
 public enum WarriorType {
 
     DWARF(2, 2),

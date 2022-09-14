@@ -1,3 +1,7 @@
+import Players.Caster;
+import Types.CasterType;
+import Types.CreatureType;
+import Types.SpellType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,8 +33,8 @@ public class CasterTest {
     @Test
     public void hasCreature(){
         CreatureType creature = caster.getCreature();
-        int creatureSpellResistance = creature.getSpellResistance();
-        assertEquals(1, creatureSpellResistance);
+        int creatureDefencePoints = creature.getDefencePoints();
+        assertEquals(1, creatureDefencePoints);
     }
 
     @Test

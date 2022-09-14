@@ -1,3 +1,9 @@
+package Players;
+
+import Players.Player;
+import Types.HealerType;
+import Types.ToolType;
+
 public class Healer extends Player {
 
     private HealerType healerType;

@@ -1,11 +1,16 @@
-public enum SpellType {
-    FIREBALL(10),
-    LIGHTNINGSTRIKE(12);
+package Types;
+
+public enum WeaponType {
+
+    SWORD(12),
+    AXE(9),
+    CLUB(7);
 
     private final int attackPoints;
 
-    SpellType(int attackPoints) {
+    WeaponType(int attackPoints) {
         this.attackPoints = attackPoints;
+
     }
 
     public int getAttackPoints() {
