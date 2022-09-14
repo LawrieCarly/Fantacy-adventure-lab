@@ -21,4 +21,9 @@ public class Player {
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
     }
+
+    public void die() {
+        this.alive = !this.alive;
+        this.healthPoints = 0;
+    }
 }

@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class WarriorTest {
 
@@ -50,6 +51,30 @@ public class WarriorTest {
         spartacus.attack(caster);
         assertEquals(45, DrFeelGood.getHealthPoints());
         assertEquals(14, caster.getHealthPoints());
+    }
+
+    @Test
+    public void canKillWarrior(){
+        Warrior lowHealthWarrior = new Warrior(true, 1, WarriorType.BARBARIAN, WeaponType.SWORD);
+        spartacus.attack(lowHealthWarrior);
+
+        assertFalse(lowHealthWarrior.isAlive());
+        assertEquals(0, lowHealthWarrior.getHealthPoints());
+    }
+
+    @Test
+    public void canKillCasterAndHealer(){
+        Caster lowHealthCaster = new Caster(true, 1, CasterType.WIZARD, SpellType.LIGHTNINGSTRIKE, CreatureType.OGRE);
+        Healer lowHealthHealer = new Healer(true, 1, HealerType.CLERIC, ToolType.HERB);
+
+        spartacus.attack(lowHealthHealer);
+        spartacus.attack(lowHealthCaster);
+
+        assertFalse(lowHealthCaster.isAlive());
+        assertFalse(lowHealthHealer.isAlive());
+
+        assertEquals(0, lowHealthCaster.getHealthPoints());
+        assertEquals(0, lowHealthHealer.getHealthPoints());
     }
 
 }
