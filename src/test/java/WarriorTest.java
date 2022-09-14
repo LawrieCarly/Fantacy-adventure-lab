@@ -51,4 +51,5 @@ public class WarriorTest {
         assertEquals(45, DrFeelGood.getHealthPoints());
         assertEquals(14, caster.getHealthPoints());
     }
+
 }
