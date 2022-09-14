@@ -27,4 +27,12 @@ public class WarriorTest {
         assertEquals(WeaponType.CLUB, kane.getWeapon());
 
     }
+
+    @Test
+    public void canChangeWeapon() {
+        tron.changeWeapon(WeaponType.CLUB);
+        assertEquals(WeaponType.CLUB, tron.getWeapon());
+
+    }
+
 }

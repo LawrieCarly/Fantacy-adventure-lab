@@ -1,7 +1,7 @@
 public class Warrior extends Player{
 
-    private final WarriorType warriorType;
-    private final WeaponType weapon;
+    private WarriorType warriorType;
+    private WeaponType weapon;
 
 
     Warrior(boolean alive, int healthPoints, WarriorType warriorType, WeaponType weapon) {
@@ -17,5 +17,9 @@ public class Warrior extends Player{
 
     public WeaponType getWeapon() {
         return weapon;
+    }
+
+    public void changeWeapon(WeaponType weapon) {
+        this.weapon = weapon;
     }
 }
