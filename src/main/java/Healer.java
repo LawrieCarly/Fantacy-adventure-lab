@@ -1,7 +1,7 @@
 public class Healer extends Player {
 
-    private final HealerType healerType;
-    private final ToolType tool;
+    private HealerType healerType;
+    private ToolType tool;
 
 
     public Healer(boolean alive, int healthPoints, HealerType healerType, ToolType tool) {
