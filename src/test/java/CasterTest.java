@@ -1,7 +1,7 @@
 import Players.Caster;
-import Types.CasterType;
-import Types.CreatureType;
-import Types.SpellType;
+import Players.Healer;
+import Players.Warrior;
+import Types.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,9 +11,17 @@ public class CasterTest {
 
     Caster caster;
 
+    Healer DrFeelGood;
+
+    Warrior tron;
+
     @Before
     public void before(){
         caster = new Caster(true, 100, CasterType.WIZARD, SpellType.FIREBALL, CreatureType.OGRE);
+        DrFeelGood = new Healer(true, 200, HealerType.CLERIC, ToolType.HERB);
+        tron = new Warrior(true, 70, WarriorType.KNIGHT, WeaponType.SWORD);
+
+
     }
 
     @Test
@@ -52,4 +60,20 @@ public class CasterTest {
         CreatureType creature = caster.getCreature();
         assertEquals(CreatureType.DRAGON, creature);
     }
+
+    @Test
+    public void canAttack(){
+        caster.attack(caster);
+        assertEquals(100, caster.getHealthPoints());
+    }
+
+    @Test
+    public void canAttackOthers(){
+        caster.attack(tron);
+        caster.attack(DrFeelGood);
+        assertEquals(64, tron.getHealthPoints());
+        assertEquals(200, DrFeelGood.getHealthPoints());
+    }
+
+
 }
