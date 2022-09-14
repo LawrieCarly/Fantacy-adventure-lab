@@ -4,11 +4,11 @@ public enum WarriorType {
     BARBARIAN ("barbarian"),
     KNIGHT ("knight");
 
-    private final String dwarf;
-    private final String barbarian;
-    private final String knight;
+    private final dwarf;
+    private final barbarian;
+    private final knight;
 
 
-    WarriorType(String dwarf) {
+    WarriorType(String dwarf, String barbarian, String knight) {
     }
 }
