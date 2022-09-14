@@ -1,3 +1,5 @@
+package Types;
+
 public enum ToolType {
     POTION(5),
     HERB(2);

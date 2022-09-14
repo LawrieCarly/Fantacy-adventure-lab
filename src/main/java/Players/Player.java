@@ -1,3 +1,5 @@
+package Players;
+
 public class Player {
 
     protected boolean alive;
