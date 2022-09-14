@@ -1,14 +1,23 @@
 public enum WarriorType {
 
-    DWARF("dwarf"),
-    BARBARIAN ("barbarian"),
-    KNIGHT ("knight");
+    DWARF(2, 2),
+    BARBARIAN (3, 5),
+    KNIGHT (4, 3);
 
-    private final dwarf;
-    private final barbarian;
-    private final knight;
+    private final int spellResistance;
+    private final int weaponResistance;
 
 
-    WarriorType(String dwarf, String barbarian, String knight) {
+    WarriorType(int spellResistance, int weaponResistance) {
+        this.spellResistance = spellResistance;
+        this.weaponResistance = weaponResistance;
+    }
+
+    public int getSpellResistance() {
+        return spellResistance;
+    }
+
+    public int getWeaponResistance() {
+        return weaponResistance;
     }
 }
