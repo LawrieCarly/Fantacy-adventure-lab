@@ -1,4 +1,5 @@
 import Players.Caster;
+import Players.Healer;
 import Players.Player;
 import Players.Warrior;
 
@@ -36,16 +37,25 @@ public class Room {
     }
 
     public void fightToDeath(){
-        Player randomPlayer = this.getRandomPlayer();
+        if(this.completed){
+            return;
+        }
+        for (Player player: this.players) {
 
-        for (Player player: this.players){
-            if (player instanceof Warrior){
+            Player randomPlayer = this.getRandomPlayer();
+
+            if (player instanceof Warrior) {
                 ((Warrior) player).attack(randomPlayer);
             }
-            if (player instanceof Caster){
+            if (player instanceof Caster) {
                 ((Caster) player).attack(randomPlayer);
             }
+            if (player instanceof Healer) {
+                ((Healer) player).heal(randomPlayer);
+            }
         }
+        this.isComplete();
+        this.fightToDeath();
     }
 
     private Player getRandomPlayer() {
