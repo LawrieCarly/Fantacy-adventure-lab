@@ -30,52 +30,40 @@ public class Warrior extends Player implements IAttack {
     @Override
     public void attack(Player player) {
         int attackPoints = this.weapon.getAttackPoints();
-
+        int totalDefencePoints = 0;
+        int currentHealth = player.getHealthPoints();
         boolean fatal = false;
 
         // handles attack against Warrior
         if ((player) instanceof Warrior){
             WarriorType warriorType = ((Warrior) player).getWarriorType();
-            int resistance = warriorType.getWeaponResistance();
-            int currentHealth = player.getHealthPoints();
-            if (attackPoints >= currentHealth + resistance){
-                fatal = true;
-            }
-            if (!fatal){
-                player.healthPoints -= (attackPoints - resistance);
-            }
+            totalDefencePoints += warriorType.getWeaponResistance();
         }
 
         // handles attack against Caster
         if ((player) instanceof Caster){
             CasterType casterType = ((Caster) player).getCasterType();
-            int resistance = casterType.getWeaponResistance();
-            int defencePoints = ((Caster) player).defend();
-            int currentHealth = player.getHealthPoints();
-            if (attackPoints >= currentHealth + resistance + defencePoints){
-                fatal = true;
-            }
-            if(!fatal && defencePoints + resistance <= attackPoints){
-                player.healthPoints -= (attackPoints - resistance - defencePoints);
-            }
+            totalDefencePoints += casterType.getWeaponResistance();
+            totalDefencePoints += ((Caster) player).defend();
         }
 
         //handles attack against Healer
         if ((player) instanceof Healer){
             HealerType healerType = ((Healer) player).getHealerType();
-            int resistance = healerType.getWeaponResistance();
-            int currentHealth = player.getHealthPoints();
-            if (attackPoints >= currentHealth + resistance){
-                fatal = true;
-            }
-            if (!fatal){
-                player.healthPoints -= (attackPoints - resistance);
-            }
+            totalDefencePoints += healerType.getWeaponResistance();
         }
+
+        // checks if blow is fatal
+        fatal = attackPoints - totalDefencePoints > currentHealth;
 
         // handles fatal blow
         if (fatal){
             player.die();
+        }
+        // handles not fatal blow
+        if(!fatal && attackPoints > totalDefencePoints){
+            int newHealth = currentHealth - (attackPoints - totalDefencePoints);
+            player.setHealthPoints(newHealth);
         }
     }
 }
