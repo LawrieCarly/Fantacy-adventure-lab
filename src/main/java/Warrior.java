@@ -1,13 +1,13 @@
 public class Warrior extends Player{
 
     private final WarriorType warriorType;
-    private final WeaponType weaponType;
+    private final WeaponType weapon;
 
 
-    Warrior(boolean alive, int healthPoints, WarriorType warriorType, WeaponType weaponType) {
+    Warrior(boolean alive, int healthPoints, WarriorType warriorType, WeaponType weapon) {
         super(alive, healthPoints);
         this.warriorType = warriorType;
-        this.weaponType = weaponType;
+        this.weapon = weapon;
 
     }
 
@@ -15,7 +15,7 @@ public class Warrior extends Player{
         return warriorType;
     }
 
-    public WeaponType getWeaponType() {
-        return weaponType;
+    public WeaponType getWeapon() {
+        return weapon;
     }
 }
