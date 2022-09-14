@@ -24,4 +24,11 @@ public class Caster extends Player implements IAttack {
     }
 
 
+    public void changeSpell(SpellType spell) {
+        this.spell = spell;
+    }
+
+    public void changeCreature(CreatureType creature) {
+        this.creature = creature;
+    }
 }

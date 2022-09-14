@@ -34,7 +34,18 @@ public class CasterTest {
     }
 
     @Test
-    public void canChangeWeapon(){
-        
+    public void canChangeSpell(){
+        caster.changeSpell(SpellType.LIGHTNINGSTRIKE);
+
+        SpellType spell = caster.getSpell();
+        assertEquals(SpellType.LIGHTNINGSTRIKE, spell);
+    }
+
+    @Test
+    public void canChangeCreature(){
+        caster.changeCreature(CreatureType.DRAGON);
+
+        CreatureType creature = caster.getCreature();
+        assertEquals(CreatureType.DRAGON, creature);
     }
 }
