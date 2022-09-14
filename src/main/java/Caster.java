@@ -22,4 +22,6 @@ public class Caster extends Player implements IAttack {
     public CreatureType getCreature() {
         return creature;
     }
+
+
 }

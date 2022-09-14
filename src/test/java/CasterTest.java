@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class CasterTest {
 
     Caster caster;
@@ -17,4 +19,22 @@ public class CasterTest {
         assertEquals(10, spellResistance);
     }
 
+    @Test
+    public void hasSpell() {
+        SpellType spell = caster.getSpell();
+        int spellAttackPoints = spell.getAttackPoints();
+        assertEquals(10, spellAttackPoints);
+    }
+
+    @Test
+    public void hasCreature(){
+        CreatureType creature = caster.getCreature();
+        int creatureSpellResistance = creature.getSpellResistance();
+        assertEquals(1, creatureSpellResistance);
+    }
+
+    @Test
+    public void canChangeWeapon(){
+        
+    }
 }

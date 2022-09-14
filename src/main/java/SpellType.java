@@ -7,4 +7,8 @@ public enum SpellType {
     SpellType(int attackPoints) {
         this.attackPoints = attackPoints;
     }
+
+    public int getAttackPoints() {
+        return this.attackPoints;
+    }
 }
